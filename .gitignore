@@ -1,0 +1,5 @@
+.godot/
+.idea/
+.import/
+export.cfg
+export_credentials.cfg
