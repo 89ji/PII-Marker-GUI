@@ -1,0 +1,32 @@
+[gd_scene load_steps=3 format=3 uid="uid://cenv5hc7j5t6e"]
+
+[sub_resource type="InputEventMouseButton" id="InputEventMouseButton_1oilc"]
+button_mask = 2
+position = Vector2(183, 5)
+global_position = Vector2(192, 51)
+button_index = 2
+pressed = true
+
+[sub_resource type="Shortcut" id="Shortcut_g8udu"]
+events = [SubResource("InputEventMouseButton_1oilc")]
+
+[node name="Context Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MenuButton" type="MenuButton" parent="."]
+layout_mode = 0
+offset_right = 116.0
+offset_bottom = 75.0
+shortcut = SubResource("Shortcut_g8udu")
+text = "asda"
+item_count = 2
+popup/item_0/text = "Name"
+popup/item_0/checkable = 2
+popup/item_1/text = "Address"
+popup/item_1/checkable = 1
+popup/item_1/id = 1
