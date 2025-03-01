@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://drg2ycvryl213"]
+
+[ext_resource type="PackedScene" uid="uid://dkajaglqlebdf" path="res://Scenes/Folder Picker.tscn" id="1_gffpe"]
+[ext_resource type="Script" path="res://Scripts/Main.cs" id="1_tk38i"]
+[ext_resource type="PackedScene" uid="uid://b4acuhmm8fg6x" path="res://Scenes/Document Picker.tscn" id="2_w8i37"]
+
+[node name="Main" type="Control" node_paths=PackedStringArray("fp", "dp")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_tk38i")
+fp = NodePath("FolderPicker")
+dp = NodePath("Document Picker")
+
+[node name="FolderPicker" parent="." instance=ExtResource("1_gffpe")]
+layout_mode = 1
+
+[node name="Document Picker" parent="." instance=ExtResource("2_w8i37")]
+visible = false
+layout_mode = 1
