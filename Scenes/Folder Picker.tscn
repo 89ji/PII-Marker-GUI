@@ -1,0 +1,109 @@
+[gd_scene load_steps=3 format=3 uid="uid://dkajaglqlebdf"]
+
+[ext_resource type="Script" path="res://Scripts/FolderPicker.cs" id="1_lc4vf"]
+[ext_resource type="Theme" uid="uid://dp65nd857n32n" path="res://Theme.tres" id="1_yx7ew"]
+
+[node name="FolderPicker" type="Control" node_paths=PackedStringArray("sourceDialog", "destinationDialog", "srcTooltip", "destTooltip")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_lc4vf")
+sourceDialog = NodePath("SourceDialog")
+destinationDialog = NodePath("DestDialog")
+srcTooltip = NodePath("PanelContainer/VBoxContainer/Source Container/Source")
+destTooltip = NodePath("PanelContainer/VBoxContainer/Dest Container/Target")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.500434
+anchor_top = 0.468364
+anchor_right = 0.500434
+anchor_bottom = 0.500772
+offset_left = -359.5
+offset_top = -96.5
+offset_right = 359.5
+offset_bottom = 96.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_yx7ew")
+metadata/_edit_use_anchors_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Title" type="RichTextLabel" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+bbcode_enabled = true
+text = "[center]Choose a source and destination folder"
+
+[node name="Source Container" type="HBoxContainer" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Source" type="RichTextLabel" parent="PanelContainer/VBoxContainer/Source Container"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+tooltip_text = "Pick a source folder"
+theme = ExtResource("1_yx7ew")
+text = "Pick a source folder"
+
+[node name="SourceBuddon" type="Button" parent="PanelContainer/VBoxContainer/Source Container"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+text = "Pick"
+
+[node name="Dest Container" type="HBoxContainer" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Target" type="RichTextLabel" parent="PanelContainer/VBoxContainer/Dest Container"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+tooltip_text = "Pick a destination folder"
+theme = ExtResource("1_yx7ew")
+text = "Pick a destination folder"
+
+[node name="DestBuddon" type="Button" parent="PanelContainer/VBoxContainer/Dest Container"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+text = "Pick"
+
+[node name="Next Button" type="Button" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Next"
+
+[node name="SourceDialog" type="FileDialog" parent="."]
+title = "Draw a cow"
+size = Vector2i(352, 180)
+ok_button_text = "Select Current Folder"
+mode_overrides_title = false
+file_mode = 2
+access = 2
+use_native_dialog = true
+
+[node name="DestDialog" type="FileDialog" parent="."]
+auto_translate_mode = 1
+title = "Among Us"
+size = Vector2i(352, 180)
+ok_button_text = "Select Current Folder"
+mode_overrides_title = false
+file_mode = 2
+access = 2
+use_native_dialog = true
+
+[connection signal="pressed" from="PanelContainer/VBoxContainer/Source Container/SourceBuddon" to="." method="ShowSourcePicker"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/Dest Container/DestBuddon" to="." method="ShowDestinationPicker"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/Next Button" to="." method="GoNext"]
+[connection signal="dir_selected" from="SourceDialog" to="." method="SrcPicked"]
+[connection signal="dir_selected" from="DestDialog" to="." method="DestPicked"]

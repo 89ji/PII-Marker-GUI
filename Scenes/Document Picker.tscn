@@ -1,0 +1,115 @@
+[gd_scene load_steps=3 format=3 uid="uid://b4acuhmm8fg6x"]
+
+[ext_resource type="Theme" uid="uid://dp65nd857n32n" path="res://Theme.tres" id="1_fcgr8"]
+[ext_resource type="Script" path="res://Scripts/DocumentPicker.cs" id="2_yp5y7"]
+
+[node name="Document Picker" type="Control" node_paths=PackedStringArray("unlDocs", "lDocs", "nextButton", "backButton")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_fcgr8")
+script = ExtResource("2_yp5y7")
+unlDocs = NodePath("List Container/Unlabeled/Unlabeled List")
+lDocs = NodePath("List Container/Labeled/Labeled List")
+nextButton = NodePath("Titlebar Container/Next")
+backButton = NodePath("Titlebar Container/Back")
+
+[node name="Titlebar Container" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 22.0
+offset_top = 11.0
+offset_right = -24.0
+offset_bottom = 91.0
+grow_horizontal = 2
+
+[node name="Back" type="Button" parent="Titlebar Container"]
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_vertical = 4
+text = "Back"
+
+[node name="Title Container" type="PanelContainer" parent="Titlebar Container"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Title" type="RichTextLabel" parent="Titlebar Container/Title Container"]
+clip_contents = false
+layout_mode = 2
+size_flags_vertical = 6
+bbcode_enabled = true
+text = "[center]Personally Identifiable Information Marker"
+fit_content = true
+
+[node name="Next" type="Button" parent="Titlebar Container"]
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 4
+disabled = true
+text = "Next"
+
+[node name="List Container" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -473.0
+offset_top = -221.5
+offset_right = 473.0
+offset_bottom = 221.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 45
+
+[node name="Unlabeled" type="VBoxContainer" parent="List Container"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="PanelContainer" type="PanelContainer" parent="List Container/Unlabeled"]
+layout_mode = 2
+
+[node name="Unlabled Label" type="RichTextLabel" parent="List Container/Unlabeled/PanelContainer"]
+layout_mode = 2
+bbcode_enabled = true
+text = "[center]Unlabeled Documents"
+fit_content = true
+
+[node name="Unlabeled List" type="ItemList" parent="List Container/Unlabeled"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+allow_reselect = true
+item_count = 2
+item_0/text = "asdasd"
+item_1/text = "dasd"
+
+[node name="Labeled" type="VBoxContainer" parent="List Container"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="PanelContainer" type="PanelContainer" parent="List Container/Labeled"]
+layout_mode = 2
+
+[node name="labled Label" type="RichTextLabel" parent="List Container/Labeled/PanelContainer"]
+layout_mode = 2
+bbcode_enabled = true
+text = "[center]Labeled Documents"
+fit_content = true
+
+[node name="Labeled List" type="ItemList" parent="List Container/Labeled"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+allow_reselect = true
+item_count = 2
+item_0/text = "asdasd"
+item_1/text = "dasd"
+
+[connection signal="item_selected" from="List Container/Unlabeled/Unlabeled List" to="." method="unlSelected"]
+[connection signal="item_selected" from="List Container/Labeled/Labeled List" to="." method="lSelected"]
