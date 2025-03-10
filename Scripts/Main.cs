@@ -6,7 +6,6 @@ using System.Linq;
 
 public partial class Main : Control
 {
-	
 	[Export] FolderPicker fp;
 	[Export] DocumentPicker dp;
 	[Export] TextMarker tm;
