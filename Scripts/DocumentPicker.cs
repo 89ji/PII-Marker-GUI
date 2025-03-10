@@ -5,7 +5,7 @@ public partial class DocumentPicker : Control
 {
 	[Export] public ItemList unlDocs;
 	[Export] public ItemList lDocs;
-	[Export] Button nextButton;
+	[Export] public Button nextButton;
 	[Signal] public delegate void NextStateEventHandler();
 	[Export] Button backButton;
 	[Signal] public delegate void PrevStateEventHandler();

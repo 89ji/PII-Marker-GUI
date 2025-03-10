@@ -10,3 +10,7 @@ ItemList/fonts/font = ExtResource("1_a3uk7")
 RichTextLabel/colors/default_color = Color(1, 1, 1, 1)
 RichTextLabel/font_sizes/normal_font_size = 30
 RichTextLabel/fonts/normal_font = ExtResource("1_a3uk7")
+TextEdit/colors/font_readonly_color = Color(1, 1, 1, 1)
+TextEdit/colors/selection_color = Color(0.331331, 0.517459, 0.695155, 1)
+TextEdit/font_sizes/font_size = 26
+TextEdit/fonts/font = ExtResource("1_a3uk7")
